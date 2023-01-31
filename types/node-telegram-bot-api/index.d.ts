@@ -384,6 +384,14 @@ declare namespace TelegramBot {
     interface SendDiceOptions extends SendBasicOptions {
         emoji?: string | undefined;
     }
+    
+    interface CreateChatInviteLinkOptions {
+        chat_id?: number | string;
+        name?: string;
+        expire_date?: number;
+        member_limit?: number;
+        creates_join_request?: boolean;
+    }
 
     /// TELEGRAM TYPES ///
     interface PassportFile {
@@ -1506,10 +1514,7 @@ declare class TelegramBot extends EventEmitter {
 
     createChatInviteLink(
         chatId: TelegramBot.ChatId,
-        name?: string,
-        expire_date?: number,
-        member_limit?: number,
-        creates_join_request?: boolean,
+        form: TelegramBot.CreateChatInviteLinkOptions,
     ): Promise<TelegramBot.ChatInviteLink>;
 
     editChatInviteLink(
